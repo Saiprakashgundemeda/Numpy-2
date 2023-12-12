@@ -1,0 +1,303 @@
+
+Open In Colab
+
+# importing numpy
+import numpy as np
+     
+Indexing and Slicing - 1D Arrays
+Accessing Elements of a 1D Array
+Indexing in NumPy Arrays is similar to Python Lists
+
+Zero-based indexing: Index of the first element is 0
+Supports Negative Indexing: Index of the last element is -1
+
+numbers_array = np.array([1, 3, 10, 0, 2, 15, 7, 100])
+third_number = numbers_array[2]
+print("third_number:", third_number)
+     
+third_number: 10
+
+fourth_number_from_last = numbers_array[-4]
+print("fourth_number_from_last:", fourth_number_from_last)
+     
+fourth_number_from_last: 2
+Slicing 1D Arrays
+Slicing is also similar to Python Lists.
+
+Slice with the [start:stop] syntax outputs elements in the interval [start, stop)
+Slice with the [start:stop:step] syntax outputs elements in the interval [start, stop) with a step size of step
+
+numbers_array = np.array([1, 3, 10, 0, 2, 15, 7, 100])
+sliced_arr = numbers_array[4:7]
+print("sliced array: ", sliced_arr)
+     
+sliced array:  [ 2 15  7]
+sac.png
+
+Using Negative Indices
+
+
+numbers_array = np.array([1, 3, 10, 0, 2, 15, 7, 100])
+sliced_arr = numbers_array[1:-2]
+print("sliced array with -ve index:", sliced_arr)
+     
+Slicing with step size and negative indices
+
+
+numbers_array = np.array([1, 3, 10, 0, 2, 15, 7, 100])
+sliced_arr = numbers_array[1:-2:2]
+print("sliced array with step size & -ve index:", sliced_arr)
+     
+Omitting the Start and Stop Indices
+
+
+sliced_arr = numbers_array[:4]
+print("sliced array with start index omitted:", sliced_arr)
+     
+
+sliced_arr = numbers_array[-3:]
+print("sliced array with end index omitted:", sliced_arr)
+     
+
+numbers_array = np.array([1, 3, 10, 0, 2, 15, 7, 100])
+slice_1 = numbers_array[1::2]
+print("sliced array with step size & end index omitted:", slice_1)
+
+slice_2 = numbers_array[::2]
+print("sliced array with step size & both start and end index omitted:", slice_2)
+     
+Slicing with a Negative Step Size
+
+
+numbers_array = np.array([1, 3, 10, 0, 2, 15, 7, 100])
+slice_1 = numbers_array[-1:0:-2]
+print("sliced array with -ve step size:", slice_1)
+
+slice_2 = numbers_array[3:-1:-1]
+print("sliced array with -ve step size, stop to the right of start:", slice_2)
+     
+
+slice_3 = numbers_array[-2:1:2]
+print("sliced array with +ve step size, stop to the left of start:", slice_3)
+     
+Modifying Slices
+In NumPy, slices can be assigned
+
+a constant or
+an array of the right shape.
+
+number_array = np.array([1, 3, 10, 0, 2, 15, 7, 100])
+number_array[1:4] = 5
+print("number_array with 5s:", number_array)
+     
+
+number_array[2:6] = np.array([11, 7, 21, 151])
+print("number_array with updated slice:", number_array)
+     
+In NumPy slicing returns a view of the original array, instead of creating a new array.
+
+This makes slicing numpy arrays very fast.
+This also means modifying a slice, modifies the underlying array as well.
+
+numbers_array = np.array([1, 7, 11, 0, 3, 17, 9, 100])
+sliced_array = numbers_array[1:4]
+
+sliced_array[0] = -10
+print("sliced_array after modifying:", sliced_array)
+print("numbers_array after modifying the slice:", numbers_array)
+     
+Assignment also returns a view of the original array
+
+
+numbers_array = np.array([1, 7, 11, 0, 3, 17, 9, 100])
+new_array = numbers_array
+
+new_array[0] = 777
+new_array[-1] = 999
+print("new_array after modification:", new_array)
+     
+
+print("numbers_array after modifying the new_array:", numbers_array)
+     
+Copying NumPy Arrays using .copy()
+
+numbers_array = np.array([1, 7, 11, 0, 3, 17, 9, 100])
+new_array = numbers_array.copy()
+
+new_array[0] = 777
+new_array[-1] = 999
+print("new_array after modification:", new_array)
+     
+
+print("numbers_array after modifying the new_array:", numbers_array)
+     
+Indexing and Slicing - 2D Arrays
+Accessing Elements of a 2D Array
+
+array_2d = np.array([['A', 'B', 'C', 'D'],
+                     ['F', 'G', 'H', 'I'],
+                     ['K', 'L', 'M', 'N']])
+
+print("[0,0]: ", array_2d[0,0])
+print("[1,-1]: ", array_2d[1,-1])
+     
+Accessing a single row or a single column
+Accessing a single row
+
+
+first_row = array_2d[0]
+print("first_row:", first_row)
+     
+
+print("second_row:", array_2d[1])
+print("third_row:", array_2d[2])
+     
+Accessing a single column
+
+
+first_col = array_2d[:,0]
+print("first_col:", first_col)
+     
+Slicing 2D Arrays
+Slicing rows
+
+
+array_2d = np.array([['A', 'B', 'C', 'D'],
+                     ['F', 'G', 'H', 'I'],
+                     ['K', 'L', 'M', 'N']])
+
+array_2d[1:3]
+     
+Slicing rows and columns
+
+
+array_2d[1:3, 2:4]
+     
+Omitting the start and stop indices can be done in 2D Arrays also
+
+
+array_2d[1:, 2:]
+     
+Slicing with Step Size
+Slicing with a +ve step size
+
+
+array_2d = np.array([['A', 'B', 'C', 'D'],
+                     ['F', 'G', 'H', 'I'],
+                     ['K', 'L', 'M', 'N']])
+
+array_2d[:, 0:4:2]
+     
+Slicing using -ve indices and a -ve step size
+
+
+array_2d[-1:-4:-2, :]
+     
+Modifying slices of a 2D Array
+
+array_2d = np.array([['A', 'B', 'C', 'D'],
+                     ['F', 'G', 'H', 'I'],
+                     ['K', 'L', 'M', 'N']])
+
+sliced_array = array_2d[1:3, :]
+
+sliced_array[1] = 'Z'
+print("sliced_array after modifying:\n", sliced_array)
+print("array_2d after modifying the slice:\n", array_2d)
+     
+Advanced Indexing and Slicing
+Fancy Indexing
+NumPy arrays can also be indexed with other arrays.
+
+The result will be a new array which contains elements at the indices given in the input array
+
+numbers_array = np.array([1, 7, 11, 0, 3])
+index_array = np.array([0, 2, 3])
+
+indexed_array = numbers_array[index_array]
+print("indexed_array:", indexed_array)
+     
+
+numbers_array = np.array([1, 7, 11, 0, 3])
+index_array = np.array([0, -2, 4, 0])
+
+indexed_array = numbers_array[index_array]
+print("indexed_array:", indexed_array)
+     
+The index array selects the elements at the given indices from the original array
+The index array should only contain integers that are in the range of index
+The shape of the index array doesn't need to match the shape of the original array.
+Boolean/Mask Index Arrays
+Boolean arrays can also be used as index arrays.
+
+numbers_array = np.array([1, 7, 11, 0, 3])
+mask_array = np.array([True, False, False, True, True])
+
+indexed_array = numbers_array[mask_array]
+print("indexed_array:", indexed_array)
+     
+The output will contain only the elements whose corresponding value in the mask_array is True.
+Unlike normal index arrays, the shape of Boolean Index Arrays should match the shape of the original array.
+Fancy Indexing and Slicing in 2D Arrays
+
+array_2d = np.array([['A', 'B', 'C', 'D'],
+                     ['F', 'G', 'H', 'I'],
+                     ['K', 'L', 'M', 'N']])
+
+selected_rows1 = array_2d[(0,2), 0]
+print("selected rows:", selected_rows1)
+     
+
+selected_rows2 = array_2d[[0,2], 0]
+print("selected rows alternative:", selected_rows2)
+     
+
+selected_rows3 = array_2d[[0,2]]
+print("selected rows omitting columns: \n", selected_rows3)
+
+     
+
+selected_columns1 = array_2d[0, (0,2)]
+print("selected columns:", selected_columns1)
+
+selected_columns2 = array_2d[0, [0,2]]
+print("selected columns alternative:", selected_columns2)
+     
+
+result_1 = array_2d[[0]]
+print("result_1:",result_1)
+
+result_2 = array_2d[[0,2]]
+print("result_2:",result_2)
+
+result_3 = array_2d[[0,2]][:, [0,2]]
+print("result_3:",result_3)
+     
+
+array_2d = np.array([['A', 'B', 'C', 'D'],
+                     ['F', 'G', 'H', 'I'],
+                     ['K', 'L', 'M', 'N']])
+
+result_4 = array_2d[[0,2], [0,2]]
+print("output with fancy indexing:", result_4)
+     
+Masking in 2D Arrays
+
+array_2d = np.array([['A', 'B', 'C', 'D', 'E'],
+                    ['F', 'G', 'H', 'I', 'J'],
+                    ['K', 'L', 'M', 'N', 'O'],
+                    ['P', 'Q', 'R', 'S', 'T'],
+                    ['U', 'V', 'W', 'X', 'Y']])
+     
+
+row_mask = np.array([False, True, True, False, True])
+array_2d[row_mask, 3]
+     
+
+row_mask = np.array([False, True, True, False, True])
+array_2d[row_mask, :]
+     
+
+col_mask = np.array([True, False, True, True, False])
+array_2d[3, col_mask]
+     
